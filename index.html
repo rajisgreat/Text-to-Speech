@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Text To Speech</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins|Quicksand|Sofia&effect=fire|neon|outline|emboss|shadow-multiple" />
+  <style>
+    body {
+      background: #00ffcc;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+
+
+    }
+
+    h1 {
+
+      font-family: Sofia;
+      margin-top: 13%;
+    }
+
+    ::selection {
+      background: red;
+      color: wheat;
+    }
+
+    #text {
+      color: gold;
+      font-family: Poppins;
+      margin-top: 9%;
+      font-size: 21px;
+      padding: 20px;
+      outline-width: 5px;
+      border-radius: 20px;
+      border: 2px solid green;
+      width: 85%;
+
+      height: 300px;
+
+    }
+
+    #says {
+      font-family: Quicksand;
+      border: 1px solid green;
+      font-size: 20px;
+      margin-top: 10px;
+      border-radius: 20px;
+      height: 50px;
+      width: 100%;
+
+    }
+
+    #says:hover {
+      font-family: Poppins;
+      border: 3px solid gold;
+      border-radius: 25px;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+  <h1 class="font-effect-shadow-multiple">Text To Speech</h1>
+  <textarea type="text" class="font-effect-emboss" id="text">Hello Everyone</textarea><br>
+  <button type="button" class="font-effect-outline" id="says">Speak</button>
+
+  <script>
+    $("#says").click(function() {
+      if ('speechSynthesis' in window) {
+        var msg = new SpeechSynthesisUtterance();
+        msg.text = $("#text").val();
+        window.speechSynthesis.speak(msg);
+
+      } else {
+        alert("Sorry, your browser doesn't support text to speech!");
+      }
+    });
+  </script>
+</body>
+
+</html>
